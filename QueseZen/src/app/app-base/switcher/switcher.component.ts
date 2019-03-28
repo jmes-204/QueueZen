@@ -22,8 +22,12 @@ export class SwitcherComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.menus = this.appService.appConfig.menus;
     this.fullname = this.appService.user.NAME + ' ' + this.appService.user.SURNAME;
+    this.menus = this.appService.appConfig.menus;
+
+    this.menus.forEach((menu, index) => {
+      console.log("menu ", index, "is", menu.MENU_NAME);
+    });
   }
 
   logout() {

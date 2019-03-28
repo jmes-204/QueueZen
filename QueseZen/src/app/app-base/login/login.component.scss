@@ -33,7 +33,6 @@
         line-height: 63px;
       }
 
-      
       .form-container {
         margin-top: 20px;
         width: 300px;
@@ -48,6 +47,13 @@
         height: 45px;
         width: 145px;
         background-color: #904942;
+        box-shadow: -4px 4px 6px rgba(67, 67, 67, 0.13);
+        color: #ffffff;
+      }
+      .login-button-1 {
+        height: 45px;
+        width: 145px;
+        background-color: #424390;
         box-shadow: -4px 4px 6px rgba(67, 67, 67, 0.13);
         color: #ffffff;
       }
