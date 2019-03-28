@@ -1,4 +1,8 @@
 <div class="container-home">
   <app-switcher></app-switcher>
 </div>
-<div style="text-align:right">branch-management</div>
+<div style="text-align:right">
+  branch-management
+  <app-bm-search [testInput]="testInput" (testOutputClick)="resiveOutputEvent($event)">
+  </app-bm-search>
+</div>

@@ -40,21 +40,21 @@ export class LoginComponent implements OnInit {
     this.btnToggleLoginLabel = "Toggle To Login Control " + this.toggleLoginControl;
   }
   btnLoginClick() {
-    debugger;
     if (this.formGroup.valid) {
       const credential = this.formGroup.value;
 
       this.authService.login(credential).subscribe(response => {
         if (response.success) {
+          this.viewService.alert("LOGIN COMPLETE");
+
           // Get the redirect URL from our auth service
           // If no redirect has been set, use the default
           const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/';
-
           // Redirect the user
           this.router.navigate([redirect]);
         } else {
           if (response.message === 'INVALID_USERNAME_OR_PASSWORD') {
-            this.viewService.alert('กรุณาตรวจสอบชื่อผู้ใช้งาน และ รหัสผ่านอีกครั้ง');
+            this.viewService.alert('INVALID USERNAME OR PASSWORD');
           }
         }
       });
@@ -64,6 +64,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.credential).subscribe(response => {
       if (response.success) {
+        this.viewService.alert("LOGIN COMPLETE");
+
         // Get the redirect URL from our auth service
         // If no redirect has been set, use the default
         const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/';
