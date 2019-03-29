@@ -1,4 +1,8 @@
 <div class="container-home">
-  <app-switcher></app-switcher>
+  <app-switcher (routerLink)="routerLinkClick($event)"></app-switcher>
 </div>
-<div style="text-align:right">homepage</div>
+<div style="text-align:right">
+  <div>HomePage</div>
+  <div *ngIf="isShowMenu(menuConfig.EntityConfigurations)">entity-configurations</div>
+  <div *ngIf="isShowMenu(menuConfig.BranchManagement)">branch-management</div>
+</div>

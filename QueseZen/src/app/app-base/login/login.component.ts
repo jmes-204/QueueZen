@@ -13,8 +13,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   formGroup: FormGroup;
-  credential: { USERNAME: string, PASSWORD: string } = { USERNAME: 'username', PASSWORD: '1234' };
-  // credential: { USERNAME: string, PASSWORD: string } = { USERNAME: '', PASSWORD: '' };
 
   toggleLoginControl: number = 0;
   btnToggleLoginLabel: string = "Toggle To Login Control 1";
@@ -23,22 +21,22 @@ export class LoginComponent implements OnInit {
     , private router: Router
     , private viewService: ViewService) { }
 
+  credential: { USERNAME: string, PASSWORD: string } = { USERNAME: 'username', PASSWORD: '1234' };
+
   ngOnInit() {
 
     this.formGroup = new FormGroup({
       USERNAME: new FormControl('', {
         validators: Validators.required
       }),
-      PASSWORD: new FormControl('', {})
+      PASSWORD: new FormControl('', {
+        validators: Validators.required
+      })
     });
 
-    this.formGroup.controls["PASSWORD"].setValidators(Validators.required);
+    this.formGroup.setValue(this.credential);
+  }
 
-  }
-  btnToggleLoginClick() {
-    this.toggleLoginControl = (this.toggleLoginControl == 1) ? 0 : 1;
-    this.btnToggleLoginLabel = "Toggle To Login Control " + this.toggleLoginControl;
-  }
   btnLoginClick() {
     if (this.formGroup.valid) {
       const credential = this.formGroup.value;
@@ -60,24 +58,4 @@ export class LoginComponent implements OnInit {
       });
     }
   }
-
-  login() {
-    this.authService.login(this.credential).subscribe(response => {
-      if (response.success) {
-        this.viewService.alert("LOGIN COMPLETE");
-
-        // Get the redirect URL from our auth service
-        // If no redirect has been set, use the default
-        const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/';
-
-        // Redirect the user
-        this.router.navigate([redirect]);
-      } else {
-        if (response.message === 'INVALID_USERNAME_OR_PASSWORD') {
-          this.viewService.alert('กรุณาตรวจสอบชื่อผู้ใช้งาน และ รหัสผ่านอีกครั้ง');
-        }
-      }
-    });
-  }
-
 }

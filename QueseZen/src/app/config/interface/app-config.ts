@@ -1,4 +1,3 @@
-
 export interface Menu {
   MENU_ID: string;
   MENU_NAME: string;

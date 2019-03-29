@@ -108,8 +108,8 @@ export class AppService {
     );
   }
 
-  isPermitted(menuId: string) {
-    const findResult = this.appConfig.menus.find(fn => fn.MENU_ID === menuId);
+  isPermitted(menuUrl: string) {
+    const findResult = this.appConfig.menus.find(fn => fn.MENU_URL === menuUrl);
     if (findResult) {
       return true;
     } else {

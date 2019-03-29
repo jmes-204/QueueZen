@@ -3,7 +3,7 @@
     <div class="content">
       <div class="menu-grid">
         <ng-container *ngFor="let menu of menus">
-          <div class="menu-link" (click)="routerLink(menu)">
+          <div class="menu-link" (click)="routerLinkClick(menu)">
             <div class="text-menu-name">
               <div class="content-menu-name">{{menu.MENU_DETAIL}}</div>
             </div>

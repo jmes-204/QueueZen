@@ -6,7 +6,6 @@ import { AppService, ResponseType } from './../app/app.service';
 //! MockupData
 import { APP_CONFIG } from './../../config/mockup-data/app-config';
 import { USER } from './../../config/mockup-data/user';
-import { AppConfig } from 'src/app/config/interface/app-config';
 import { CurrentConfig } from 'src/app/config/interface/local-storage/current-config';
 //! MockupData
 
@@ -28,7 +27,7 @@ export class AuthService {
   
       if (currentConfig) {
         // logged in so return true
-        this.appService.user = currentConfig["userInfo"];
+        this.appService.user = currentConfig.userInfo;
         this.appService.appConfig = {
           menus: currentConfig.menus,
           general: currentConfig.general
@@ -63,7 +62,7 @@ export class AuthService {
     //TODO: Fix for test login
     if (credential.USERNAME == "username" && credential.PASSWORD == "1234") {
 
-      let response = {
+      const response = {
         success: true,
         message: "login complete",
         userInfo: USER,
@@ -76,6 +75,8 @@ export class AuthService {
         menus: response.menus,
         general: response.general
       }
+
+
 
       localStorage.setItem('currentConfig', JSON.stringify(response));
       return of(response)

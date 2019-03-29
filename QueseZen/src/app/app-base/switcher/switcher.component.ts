@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from './../../services/authen/auth.service';
@@ -14,6 +14,7 @@ export class SwitcherComponent implements OnInit {
 
   menus: Menu[];
   fullname = '';
+  @Output() routerLink = new EventEmitter();
 
   constructor(
     private appService: AppService,
@@ -24,10 +25,6 @@ export class SwitcherComponent implements OnInit {
   ngOnInit() {
     this.fullname = this.appService.user.NAME + ' ' + this.appService.user.SURNAME;
     this.menus = this.appService.appConfig.menus;
-
-    this.menus.forEach((menu, index) => {
-      console.log("menu ", index, "is", menu.MENU_NAME);
-    });
   }
 
   logout() {
@@ -37,8 +34,10 @@ export class SwitcherComponent implements OnInit {
       }
     });
   }
-  routerLink(menu: Menu) {
-    this.router.navigate([menu.MENU_URL]);
+  routerLinkClick(menu: Menu) {
+    console.log("Menu", menu);
+    // this.router.navigate([menu.MENU_URL]);
+    this.routerLink.emit(menu);
   }
 
 }

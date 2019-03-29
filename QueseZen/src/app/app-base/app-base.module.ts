@@ -7,10 +7,13 @@ import { AngularMatterialModule } from './../matterials/angular-matterial.module
 
 import { AppService } from './../services/app/app.service';
 import { ViewService } from './../services/view/view.service';
+import { MenuConfig } from './../config/class/menu-config';
 
 import { LoginComponent } from './login/login.component';
 import { HomepageComponent } from './../app-modules/homepage/homepage.component';
 import { SwitcherComponent } from './switcher/switcher.component';
+
+
 
 const components = [
   LoginComponent
@@ -31,6 +34,7 @@ const components = [
   , providers: [
     AppService
     , ViewService
+    , MenuConfig
   ]
 })
 export class AppBaseModule { }
