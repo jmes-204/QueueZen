@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+//* == Component Of Menu == *//
 import { BranchManagementMainComponent } from './component/branch-management-main/branch-management-main.component';
+//* ======================= *//
 
 const components = [
   BranchManagementMainComponent

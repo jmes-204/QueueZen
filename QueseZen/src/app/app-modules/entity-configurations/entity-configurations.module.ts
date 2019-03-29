@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//* Component 
-import { EntityConfigurationsMainComponent } from './component/entity-configurations-main/entity-configurations-main.component';
 
+//* == Component Of Menu == *//
+import { EntityConfigurationsMainComponent } from './component/entity-configurations-main/entity-configurations-main.component';
+//* ======================= *//
 const components = [
   EntityConfigurationsMainComponent
 ];

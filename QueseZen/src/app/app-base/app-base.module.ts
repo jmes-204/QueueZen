@@ -13,10 +13,10 @@ import { LoginComponent } from './login/login.component';
 import { HomepageComponent } from './../app-modules/homepage/homepage.component';
 import { SwitcherComponent } from './switcher/switcher.component';
 
-/* == Menu Module == */
+//* == Menu Module == *//
 import { EntityConfigurationsModule } from './../app-modules/entity-configurations/entity-configurations.module';
 import { BranchManagementModule } from './../app-modules/branch-management/branch-management.module';
-/* ================ */
+//* ================ *//
 
 const components = [
   LoginComponent

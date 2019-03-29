@@ -8,11 +8,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewService } from './services/view/view.service';
 
-//*== Menu Module ==*//
-import { BranchManagementModule } from './app-modules/branch-management/branch-management.module'
-import { EntityConfigurationsModule } from './app-modules/entity-configurations/entity-configurations.module';
-//*================*//
-
 import lcoaleTh from '@angular/common/locales/th';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(lcoaleTh);
@@ -23,12 +18,7 @@ registerLocaleData(lcoaleTh);
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AppBaseModule,
-
-    //*== Menu Module ==*//
-    BranchManagementModule,
-    EntityConfigurationsModule,
-    //*================*//
+    AppBaseModule
   ],
   declarations: [
     AppComponent
