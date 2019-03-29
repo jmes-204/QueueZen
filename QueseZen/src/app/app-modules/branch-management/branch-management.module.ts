@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BranchManagementMainComponent } from './component/branch-management-main/branch-management-main.component';
 
 const components = [
+  BranchManagementMainComponent
 ];
 
 @NgModule({
@@ -11,6 +13,7 @@ const components = [
   , declarations: components
   , entryComponents: components
   , exports: components
+  , bootstrap: components
   , providers: [
   ]
 })

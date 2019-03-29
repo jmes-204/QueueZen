@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+//* Component 
+import { EntityConfigurationsMainComponent } from './component/entity-configurations-main/entity-configurations-main.component';
 
 const components = [
+  EntityConfigurationsMainComponent
 ];
 @NgModule({
   imports: [
@@ -10,6 +13,7 @@ const components = [
   , declarations: components
   , entryComponents: components
   , exports: components
+  , bootstrap: components
   , providers: [
   ]
 })

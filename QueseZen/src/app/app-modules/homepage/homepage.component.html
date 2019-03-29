@@ -2,7 +2,11 @@
   <app-switcher (routerLink)="routerLinkClick($event)"></app-switcher>
 </div>
 <div style="text-align:right">
-  <div>HomePage</div>
-  <div *ngIf="isShowMenu(menuConfig.EntityConfigurations)">entity-configurations</div>
-  <div *ngIf="isShowMenu(menuConfig.BranchManagement)">branch-management</div>
+  <div *ngIf="activeMenuUrl == null">HomePage</div>
+  <div *ngIf="isShowMenu(menuConfig.EntityConfigurations)">
+    <app-entity-configurations-main></app-entity-configurations-main>
+  </div>
+  <div *ngIf="isShowMenu(menuConfig.BranchManagement)">
+    <app-branch-management-main></app-branch-management-main>
+  </div>
 </div>
