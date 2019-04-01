@@ -10,6 +10,7 @@ import { ViewService } from './../view/view.service';
 @Injectable()
 export class AppService {
   user: User = null;
+  token: String = null;
   appConfig: AppConfig = null;
 
   regEx: RegExp;
@@ -64,27 +65,37 @@ export class AppService {
    * @param params (Optional) Parameters with JSON data format
    * @param showLoading (Boolean) showLoading, default: true
    * @param responseType (Optional) Response type, default: ResponseType.json
+   * 
+   * @param Out 
+   * {
+   *    is_success:boolene
+   *    message:string 
+   *    result:Object {token:""}
+   * }
    */
+
+
+
   reqApi(url: string, params: any = {}, responseType: ResponseType = ResponseType.json, showLoading: boolean = false): Observable<any> {
     if (showLoading) {
       this.viewService.showLoading();
     }
     return this._reqUrl(url, params, responseType).pipe(
       map((jsonResponse: any) => {
-        const status: string = jsonResponse.success ? ' (success)' : ' (fail)';
+        const status: string = jsonResponse.is_success ? ' (success)' : ' (fail)';
         console.log('reqApi: ' + url + status, params, jsonResponse);
         if (showLoading) {
           this.viewService.hideLoading();
         }
 
-        if (jsonResponse.success && jsonResponse.message !== '') {
+        if (jsonResponse.is_success && jsonResponse.message !== '') {
           this.regEx = new RegExp('^[0-9]+$');
           if (!this.regEx.test(jsonResponse.message)) {
             this.viewService.alert(jsonResponse.message);
           }
         }
 
-        if (!jsonResponse.success) {
+        if (!jsonResponse.is_success) {
           this.viewService.alert('เกิดข้อผิดพลาด');
         }
 
@@ -92,11 +103,11 @@ export class AppService {
           // this.viewService.hideLoading();
           throw new Error('request return empty response');
         }
-        else if (jsonResponse.success == null) {
+        else if (jsonResponse.is_success == null) {
           // this.viewService.hideLoading();
           throw new Error(`json response does not contain 'success' parameter`);
         }
-        else if (jsonResponse.success != true) {
+        else if (jsonResponse.is_success != true) {
           // this.viewService.hideLoading();
           throw new Error(jsonResponse.message);
         }

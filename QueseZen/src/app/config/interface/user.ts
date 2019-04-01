@@ -13,4 +13,5 @@ export interface User {
   EMAIL: string;
   STATUS: string;
   IMAGE: string;
+  
 }

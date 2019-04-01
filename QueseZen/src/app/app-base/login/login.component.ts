@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       const credential = this.formGroup.value;
 
       this.authService.login(credential).subscribe(response => {
-        if (response.success) {
+        if (response.is_success) {
           this.viewService.alert("LOGIN COMPLETE");
 
           // Get the redirect URL from our auth service

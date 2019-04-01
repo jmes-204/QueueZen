@@ -24,7 +24,7 @@ export class AuthService {
       //TODO: Fix for test login
       const currentConfigStr: string = localStorage.getItem('currentConfig');
       const currentConfig: CurrentConfig = JSON.parse(currentConfigStr);
-  
+
       if (currentConfig) {
         // logged in so return true
         this.appService.user = currentConfig.userInfo;
@@ -41,7 +41,7 @@ export class AuthService {
       //TODO: Fix for test login
       // return this.appService.reqApi(`${this.appService.hostName}Handlers/AppInit.ashx`, null, ResponseType.json).pipe(
       //   map(response => {
-      //     if (response.success && response.userInfo) {
+      //     if (response.is_success && response.userInfo) {
       //       // update global user information
       //       this.appService.user = response.userInfo;
 
@@ -52,7 +52,7 @@ export class AuthService {
       //         General: response.general
       //       };
       //     }
-      //     return response.success && response.userInfo != undefined;
+      //     return response.is_success && response.userInfo != undefined;
       //   })
       // );
     }
@@ -63,7 +63,7 @@ export class AuthService {
     if (credential.USERNAME == "username" && credential.PASSWORD == "1234") {
 
       const response = {
-        success: true,
+        is_success: true,
         message: "login complete",
         userInfo: USER,
         menus: APP_CONFIG.menus,
@@ -85,25 +85,34 @@ export class AuthService {
 
     // return this.appService.reqApi(`${this.appService.hostName}/Handlers/AppLogin.ashx`, credential, ResponseType.json).pipe(
     //   map(response => {
-    //     if (response.success) {
-    //       this.appService.user = response.userInfo;
-    //       this.appService.appConfig = {
-    //         Systems: response.systems,
-    //         Functions: response.function,
-    //         General: response.general
-    //       };
+
+    //     const mockResponse = {
+    //       is_success: true,
+    //       message: "login complete",
+    //       userInfo: USER,
+    //       menus: APP_CONFIG.menus,
+    //       general: APP_CONFIG.general
     //     }
 
-    //     return response;
+    //     if (response.is_success) {
+    //       this.appService.token = response.result.token;
+    //       this.appService.user = mockResponse.userInfo;
+    //       this.appService.appConfig = {
+    //         menus: mockResponse.menus,
+    //         general: mockResponse.general
+    //       }
+    //     }
+
+    //     return mockResponse;
     //   })
     // );
   }
   logout(): Observable<any> {
     //TODO: Fix for test logout
     let response = {
-      success: true
+      is_success: true
     }
-    if (response.success) {
+    if (response.is_success) {
       this.appService.user = null;
       this.appService.appConfig = null;
     }
@@ -114,7 +123,7 @@ export class AuthService {
 
     // return this.appService.reqApi(`${this.appService.hostName}/Handlers/AppLogout.ashx`, null, ResponseType.json).pipe(
     //   map(response => {
-    //     if (response.success) {
+    //     if (response.is_success) {
     //       this.appService.user = null;
     //       this.appService.appConfig = null;
     //     }

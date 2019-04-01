@@ -29,7 +29,7 @@ export class SwitcherComponent implements OnInit {
 
   logout() {
     this.authService.logout().subscribe(response => {
-      if (response.success) {
+      if (response.is_success) {
         window.location.reload();
       }
     });
