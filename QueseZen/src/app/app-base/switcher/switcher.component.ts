@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from './../../services/authen/auth.service';
 import { AppService, ResponseType } from './../../services/app/app.service';
-import { Menu } from './../../config/interface/app-config';
+import { MENU } from './../../config/interface/app-config';
 
 @Component({
   selector: 'app-switcher',
@@ -12,7 +12,7 @@ import { Menu } from './../../config/interface/app-config';
 })
 export class SwitcherComponent implements OnInit {
 
-  menus: Menu[];
+  menus: MENU[];
   fullname = '';
   @Output() routerLink = new EventEmitter();
 
@@ -24,18 +24,18 @@ export class SwitcherComponent implements OnInit {
 
   ngOnInit() {
     this.fullname = this.appService.user.NAME + ' ' + this.appService.user.SURNAME;
-    this.menus = this.appService.appConfig.menus;
+    this.menus = this.appService.appConfig.MENUS;
   }
 
   logout() {
     this.authService.logout().subscribe(response => {
-      if (response.success) {
+      if (response.IS_SUCCESS) {
         window.location.reload();
       }
     });
   }
-  routerLinkClick(menu: Menu) {
-    console.log("Menu", menu);
+  routerLinkClick(menu: MENU) {
+    console.log('Menu', menu);
     // this.router.navigate([menu.MENU_URL]);
     this.routerLink.emit(menu);
   }

@@ -1,22 +1,27 @@
 import { Injectable, ElementRef } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http'; //, RequestOptions, Response
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http'; // , RequestOptions, Response
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User } from './../../config/interface/user';
-import { AppConfig } from './../../config/interface/app-config';
+import { USER } from './../../config/interface/user';
+import { APP_CONFIG } from './../../config/interface/app-config';
 import { ViewService } from './../view/view.service';
 
+export enum ResponseType {
+  json = 0,
+  text = 1,
+  arrayBuffer = 2
+}
 @Injectable()
 export class AppService {
-  user: User = null;
-  appConfig: AppConfig = null;
+  user: USER = null;
+  appConfig: APP_CONFIG = null;
 
   regEx: RegExp;
 
   constructor(
-    private http: HttpClient
-    , private viewService: ViewService
+    private http: HttpClient,
+    private viewService: ViewService
   ) { }
 
   /**
@@ -25,7 +30,8 @@ export class AppService {
    * `const host = this.app.hostName;`
    */
   get hostName(): string {
-    return document.getElementsByTagName('base')[0].href;
+    // return document.getElementsByTagName('base')[0].href;
+    return 'https://queuezenapi.azurewebsites.net/web';
   }
 
   get filePath(): string {
@@ -71,36 +77,33 @@ export class AppService {
     }
     return this._reqUrl(url, params, responseType).pipe(
       map((jsonResponse: any) => {
-        const status: string = jsonResponse.success ? ' (success)' : ' (fail)';
+        const status: string = jsonResponse.IS_SUCCESS ? ' (success)' : ' (fail)';
         console.log('reqApi: ' + url + status, params, jsonResponse);
         if (showLoading) {
           this.viewService.hideLoading();
         }
 
-        if (jsonResponse.success && jsonResponse.message !== '') {
+        if (jsonResponse.IS_SUCCESS && jsonResponse.message !== '') {
           this.regEx = new RegExp('^[0-9]+$');
           if (!this.regEx.test(jsonResponse.message)) {
             this.viewService.alert(jsonResponse.message);
           }
         }
 
-        if (!jsonResponse.success) {
+        if (!jsonResponse.IS_SUCCESS) {
           this.viewService.alert('เกิดข้อผิดพลาด');
         }
 
         if (jsonResponse == null) {
           // this.viewService.hideLoading();
           throw new Error('request return empty response');
-        }
-        else if (jsonResponse.success == null) {
+        } else if (jsonResponse.IS_SUCCESS == null) {
           // this.viewService.hideLoading();
-          throw new Error(`json response does not contain 'success' parameter`);
-        }
-        else if (jsonResponse.success != true) {
+          throw new Error(`json response does not contain 'IS_SUCCESS' parameter`);
+        } else if (jsonResponse.IS_SUCCESS != true) {
           // this.viewService.hideLoading();
           throw new Error(jsonResponse.message);
-        }
-        else {
+        } else {
           // this.viewService.hideLoading();
           return jsonResponse;
         }
@@ -109,7 +112,7 @@ export class AppService {
   }
 
   isPermitted(menuUrl: string) {
-    const findResult = this.appConfig.menus.find(fn => fn.MENU_URL === menuUrl);
+    const findResult = this.appConfig.MENUS.find(fn => fn.MENU_URL === menuUrl);
     if (findResult) {
       return true;
     } else {
@@ -125,9 +128,9 @@ export class AppService {
    * @param name ชื่อของ cookie
    */
   getCookie(name): string {
-    let value = '; ' + document.cookie;
-    let parts = value.split('; ' + name + '=');
-    if (parts.length == 2) return parts.pop().split(';').shift();
+    const value = '; ' + document.cookie;
+    const parts = value.split('; ' + name + '=');
+    if (parts.length === 2) { return parts.pop().split(';').shift(); }
   }
 
   /**
@@ -138,9 +141,12 @@ export class AppService {
    * @param data JSON data format
    */
   softCopyJSON(data: any): object {
-    let cloned: object = {};
-    for (let key in data)
-      cloned[key] = data[key];
+    const cloned: object = {};
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        cloned[key] = data[key];
+      }
+    }
 
     return cloned;
   }
@@ -153,18 +159,20 @@ export class AppService {
    * @param url Url
    */
   getDomainName(url: string): string {
-    let domainNameStartIndex = url.indexOf('//');
+    const domainNameStartIndex = url.indexOf('//');
     let domainName = '';
 
-    if (domainNameStartIndex >= 0)
+    if (domainNameStartIndex >= 0) {
       domainName = url.substring(domainNameStartIndex + 2);
-    else
+    } else {
       domainName = url;
+    }
 
-    let domainNameEndIndex = domainName.indexOf('/');
+    const domainNameEndIndex = domainName.indexOf('/');
 
-    if (domainNameEndIndex >= 0)
+    if (domainNameEndIndex >= 0) {
       domainName = domainName.substring(0, domainNameEndIndex);
+    }
 
     return domainName;
   }
@@ -178,25 +186,23 @@ export class AppService {
       })
     };
 
-    let paramsToSend = this.softCopyJSON(params);
-    let domainName = this.getDomainName(url);
-    if (domainName.toLowerCase() == window.location.host.toLowerCase())
-      paramsToSend['CSRF_TOKEN'] = this.getCookie('CSRF_TOKEN');
+    const paramsToSend = this.softCopyJSON(params);
+    const domainName = this.getDomainName(url);
+    // if (domainName.toLowerCase() === window.location.host.toLowerCase()) {
+    //   paramsToSend['CSRF_TOKEN'] = this.getCookie('CSRF_TOKEN');
+    // }
 
-    let response = this.http.post(url, paramsToSend, httpOptions);
+    const response = this.http.post(url, paramsToSend, httpOptions);
 
-    if (responseType == ResponseType.json)
+    if (responseType === ResponseType.json) {
       return response.pipe(map((res: Response) => res.json()));
-    else if (responseType == ResponseType.arrayBuffer)
+    } else if (responseType === ResponseType.arrayBuffer) {
       return response.pipe(map((res: Response) => res.arrayBuffer()));
-    else
+    } else {
       return response.pipe(map((res: Response) => res.text()));
+    }
   }
 }
 
 
-export enum ResponseType {
-  json,
-  text,
-  arrayBuffer
-}
+

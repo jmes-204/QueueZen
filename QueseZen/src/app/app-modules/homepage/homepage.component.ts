@@ -9,7 +9,7 @@ import { MenuConfig } from './../../config/class/menu-config';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
-  private activeMenuUrl: string = null;
+  activeMenuUrl: string = null;
   constructor(public appService: AppService, public menuConfig: MenuConfig) {
   }
 
@@ -18,11 +18,11 @@ export class HomepageComponent implements OnInit {
   routerLinkClick(menu: Menu) {
     this.activeMenuUrl = menu.MENU_URL;
   }
+
   isShowMenu(menuConfigUrl: string) {
-    if (this.activeMenuUrl == menuConfigUrl && this.appService.isPermitted(menuConfigUrl)) {
+    if (this.activeMenuUrl === menuConfigUrl && this.appService.isPermitted(menuConfigUrl)) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }

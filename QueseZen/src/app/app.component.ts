@@ -7,6 +7,7 @@ import { ViewService } from './services/view/view.service';
 })
 export class AppComponent {
   title = 'QueseZen';
+
   constructor(public viewService: ViewService) {
     if (window) {
       // window.console.log = function () { };

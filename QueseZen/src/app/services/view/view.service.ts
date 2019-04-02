@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 
 @Injectable()
 export class ViewService {
-  showLoader: boolean = false;
+  showLoader = false;
   constructor(
   ) { }
 

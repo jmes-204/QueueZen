@@ -1,14 +1,13 @@
-export interface Menu {
+export interface MENU {
   MENU_ID: string;
   MENU_NAME: string;
   MENU_DETAIL: string;
   MENU_URL: string;
   MENU_PARENT: string;
-  SYSTEM_ID: string;
   ORDER_NO: number;
 }
 
-export interface General {
+export interface GENURAL {
   CONFIG_NAME: string;
   CONFIG_VALUE: any;
   CONFIG_DESCR: string;
@@ -17,8 +16,8 @@ export interface General {
 /**
  * export เฉพาะ export interface นี้เท่านั้น
  */
-export interface AppConfig {
-  // systems?: System[];
-  menus?: Menu[];
-  general?: General[];
+export interface APP_CONFIG {
+  MENUS?: MENU[];
+  GENURAL?: GENURAL[];
 }
+

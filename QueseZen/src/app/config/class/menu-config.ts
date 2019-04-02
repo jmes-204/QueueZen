@@ -1,4 +1,7 @@
 export class MenuConfig {
-  EntityConfigurations: string = "entity-configurations";
-  BranchManagement: string = "branch-management";
+  EntityConfigurations = 'entity-configurations';
+  BranchManagement = 'branch-management';
+  QueueDashboard = 'queue-dashboard';
+
 }
+

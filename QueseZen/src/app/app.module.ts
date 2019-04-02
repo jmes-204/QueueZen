@@ -22,7 +22,7 @@ registerLocaleData(lcoaleTh);
   ],
   declarations: [
     AppComponent
-  ],
+    ],
   providers: [ViewService],
   bootstrap: [AppComponent]
 })

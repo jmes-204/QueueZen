@@ -14,12 +14,8 @@ export class LoginComponent implements OnInit {
 
   formGroup: FormGroup;
 
-  toggleLoginControl: number = 0;
-  btnToggleLoginLabel: string = "Toggle To Login Control 1";
   constructor(
-    private authService: AuthService
-    , private router: Router
-    , private viewService: ViewService) { }
+    private authService: AuthService, private router: Router, private viewService: ViewService) { }
 
   credential: { USERNAME: string, PASSWORD: string } = { USERNAME: 'username', PASSWORD: '1234' };
 
@@ -42,8 +38,8 @@ export class LoginComponent implements OnInit {
       const credential = this.formGroup.value;
 
       this.authService.login(credential).subscribe(response => {
-        if (response.success) {
-          this.viewService.alert("LOGIN COMPLETE");
+        if (response.IS_SUCCESS) {
+          this.viewService.alert('LOGIN COMPLETE');
 
           // Get the redirect URL from our auth service
           // If no redirect has been set, use the default

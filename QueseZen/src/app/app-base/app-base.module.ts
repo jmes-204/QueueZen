@@ -7,16 +7,19 @@ import { AngularMatterialModule } from './../matterials/angular-matterial.module
 
 import { AppService } from './../services/app/app.service';
 import { ViewService } from './../services/view/view.service';
+import { GlobalFunctionService } from './../services/global-function/global-function.service';
 import { MenuConfig } from './../config/class/menu-config';
+
 
 import { LoginComponent } from './login/login.component';
 import { HomepageComponent } from './../app-modules/homepage/homepage.component';
 import { SwitcherComponent } from './switcher/switcher.component';
 
-//* == Menu Module == *//
+// * == Menu Module == * //
 import { EntityConfigurationsModule } from './../app-modules/entity-configurations/entity-configurations.module';
 import { BranchManagementModule } from './../app-modules/branch-management/branch-management.module';
-//* ================ *//
+import { QueueDashboardModule } from './../app-modules/queue-dashboard/queue-dashboard.module';
+// * ================ * //
 
 const components = [
   LoginComponent
@@ -33,6 +36,7 @@ const components = [
     /* == Menu Module == */
     , EntityConfigurationsModule
     , BranchManagementModule
+    , QueueDashboardModule
     /* ================ */
   ]
   , declarations: components
@@ -41,6 +45,7 @@ const components = [
   , providers: [
     AppService
     , ViewService
+    , GlobalFunctionService
     , MenuConfig
   ]
 })
