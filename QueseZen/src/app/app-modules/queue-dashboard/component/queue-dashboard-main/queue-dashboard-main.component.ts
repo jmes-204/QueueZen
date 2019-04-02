@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalFunctionService } from './../../../../services/global-function/global-function.service'
+import { GlobalFunctionService } from './../../../../services/global-function/global-function.service';
 @Component({
   selector: 'app-queue-dashboard-main',
   templateUrl: './queue-dashboard-main.component.html',

@@ -16,6 +16,7 @@ export interface GENURAL {
 /**
  * export เฉพาะ export interface นี้เท่านั้น
  */
+// tslint:disable-next-line: class-name
 export interface APP_CONFIG {
   MENUS?: MENU[];
   GENURAL?: GENURAL[];

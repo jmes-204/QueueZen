@@ -110,7 +110,7 @@ export class AppService {
         } else if (jsonResponse.IS_SUCCESS == null) {
           // this.viewService.hideLoading();
           throw new Error(`json response does not contain 'IS_SUCCESS' parameter`);
-        } else if (jsonResponse.IS_SUCCESS != true) {
+        } else if (jsonResponse.IS_SUCCESS !== true) {
           // this.viewService.hideLoading();
           throw new Error(jsonResponse.message);
         } else {
