@@ -70,7 +70,17 @@ export class AppService {
    * @param params (Optional) Parameters with JSON data format
    * @param showLoading (Boolean) showLoading, default: true
    * @param responseType (Optional) Response type, default: ResponseType.json
+   *
+   * @param Out
+   * {
+   *    is_success:boolene
+   *    message:string
+   *    result:Object {token:""}
+   * }
    */
+
+
+
   reqApi(url: string, params: any = {}, responseType: ResponseType = ResponseType.json, showLoading: boolean = false): Observable<any> {
     if (showLoading) {
       this.viewService.showLoading();
