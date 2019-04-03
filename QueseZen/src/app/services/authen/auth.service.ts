@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AppService, ResponseType } from './../app/app.service';
 
-import { CURRENCE_CONFIG } from 'src/app/config/interface/local-storage/current-config';
+import { IFCurrenceConfig } from 'src/app/config/interface/local-storage/current-config';
 // ! MockupData
 import { appConfig } from './../../config/mockup-data/app-config';
 import { user } from './../../config/mockup-data/user';
@@ -23,7 +23,7 @@ export class AuthService {
     } else {
       // TODO: Fix for test login
       const currentConfigStr: string = localStorage.getItem('currentConfig');
-      const currentConfig: CURRENCE_CONFIG = JSON.parse(currentConfigStr);
+      const currentConfig: IFCurrenceConfig = JSON.parse(currentConfigStr);
 
       if (currentConfig) {
         // logged in so return true

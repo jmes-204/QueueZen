@@ -1,3 +1,16 @@
-<p>
-  priority-queue-list works!
-</p>
+<div>
+  <table class="main-container">
+    <tbody>
+      <tr>
+        <td [colSpan]=priorityQueueMaxItem class="align-middle priority-queue-list-title">จองคิวออนไลน์ / Online Booking
+          Reservation</td>
+      </tr>
+      <tr>
+        <td *ngFor="let item of priorityQueueItem" [style.width.%]=priorityQueueItemWidth class="align-baseline">
+          <app-priority-queue-item [initParameter]=item>
+          </app-priority-queue-item>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

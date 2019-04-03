@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from './../../services/authen/auth.service';
 import { AppService, ResponseType } from './../../services/app/app.service';
-import { MENU } from './../../config/interface/app-config';
+import { IFMenu } from './../../config/interface/app-config';
 
 @Component({
   selector: 'app-switcher',
@@ -12,7 +12,7 @@ import { MENU } from './../../config/interface/app-config';
 })
 export class SwitcherComponent implements OnInit {
 
-  menus: MENU[];
+  menus: IFMenu[];
   fullname = '';
   @Output() routerLink = new EventEmitter();
 
@@ -34,7 +34,7 @@ export class SwitcherComponent implements OnInit {
       }
     });
   }
-  routerLinkClick(menu: MENU) {
+  routerLinkClick(menu: IFMenu) {
     console.log('Menu', menu);
     // this.router.navigate([menu.MENU_URL]);
     this.routerLink.emit(menu);

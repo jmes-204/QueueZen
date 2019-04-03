@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http'; //
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { USER } from './../../config/interface/user';
-import { APP_CONFIG } from './../../config/interface/app-config';
+import { IFUser } from './../../config/interface/user';
+import { IFAppConfig } from './../../config/interface/app-config';
 import { ViewService } from './../view/view.service';
 
 export enum ResponseType {
@@ -14,8 +14,8 @@ export enum ResponseType {
 }
 @Injectable()
 export class AppService {
-  user: USER = null;
-  appConfig: APP_CONFIG = null;
+  user: IFUser = null;
+  appConfig: IFAppConfig = null;
 
   regEx: RegExp;
 

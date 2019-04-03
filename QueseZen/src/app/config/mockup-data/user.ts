@@ -1,6 +1,6 @@
-import { USER } from '../interface/user';
+import { IFUser } from '../interface/user';
 
-export const user: USER = {
+export const user: IFUser = {
   USER_ID: '999999999',
   TITLE: null,
   NAME: 'ผู้ใช้งาน',

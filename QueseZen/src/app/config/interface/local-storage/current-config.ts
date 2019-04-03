@@ -1,8 +1,8 @@
-import { USER } from '../user';
-import { MENU, GENURAL } from '../app-config';
+import { IFUser } from '../user';
+import { IFMenu, IFGeneral } from '../app-config';
 
-export interface CURRENCE_CONFIG  {
-    USER_INFO: USER;
-    MENUS: MENU[];
-    GENERAL: GENURAL[];
+export interface IFCurrenceConfig  {
+    USER_INFO: IFUser;
+    MENUS: IFMenu[];
+    GENERAL: IFGeneral[];
 }

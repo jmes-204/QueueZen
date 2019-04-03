@@ -1,4 +1,4 @@
-export interface MENU {
+export interface IFMenu {
   MENU_ID: string;
   MENU_NAME: string;
   MENU_DETAIL: string;
@@ -7,7 +7,7 @@ export interface MENU {
   ORDER_NO: number;
 }
 
-export interface GENURAL {
+export interface IFGeneral {
   CONFIG_NAME: string;
   CONFIG_VALUE: any;
   CONFIG_DESCR: string;
@@ -17,8 +17,8 @@ export interface GENURAL {
  * export เฉพาะ export interface นี้เท่านั้น
  */
 // tslint:disable-next-line: class-name
-export interface APP_CONFIG {
-  MENUS?: MENU[];
-  GENURAL?: GENURAL[];
+export interface IFAppConfig {
+  MENUS?: IFMenu[];
+  GENURAL?: IFGeneral[];
 }
 

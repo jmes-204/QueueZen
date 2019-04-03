@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Menu } from 'src/app/config/interface/app-config';
+import { IFMenu } from 'src/app/config/interface/app-config';
 import { AppService } from 'src/app/services/app/app.service';
 import { MenuConfig } from './../../config/class/menu-config';
 
@@ -15,7 +15,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
   }
-  routerLinkClick(menu: Menu) {
+  routerLinkClick(menu: IFMenu) {
     this.activeMenuUrl = menu.MENU_URL;
   }
 

@@ -1,4 +1,4 @@
-export interface USER {
+export interface IFUser {
   USER_ID: string;
   TITLE: string;
   NAME: string;

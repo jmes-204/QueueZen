@@ -1,6 +1,6 @@
-import { APP_CONFIG } from '../interface/app-config';
+import { IFAppConfig } from '../interface/app-config';
 
-export const appConfig: APP_CONFIG = {
+export const appConfig: IFAppConfig = {
   MENUS: [
     {
       MENU_ID: '1',
