@@ -31,7 +31,7 @@ export class OnserviceQueueListComponent implements OnInit {
   }
   setOnServiceQueueItemHeight(maxItem: number) {
     this.priorityQueueMaxItem = maxItem;
-    this.priorityQueueItemHeight = 100 / (maxItem + 1); // ! +1 Header Column
+    this.priorityQueueItemHeight = 100 / (maxItem);
   }
   setOnServiceQueueItem(mockPriorityQueueItem: IFTable[], maxItem: number) {
     this.dataSource = new Array();
