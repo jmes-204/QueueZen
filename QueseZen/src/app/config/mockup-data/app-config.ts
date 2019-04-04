@@ -1,4 +1,4 @@
-import { IFAppConfig } from '../interface/app-config';
+import { IFAppConfig } from 'src/app/config/interface/app-config';
 
 export const appConfig: IFAppConfig = {
   MENUS: [

@@ -3,12 +3,9 @@ export interface IFUser {
   TITLE: string;
   NAME: string;
   SURNAME: string;
-  DEPT1: string;
-  DEPT2: string;
-  DEPT3: string;
-  DEPT4: string;
+  BRANCH_ID: string;
+  BRANCH_NAME: string;
   POSITION: string;
-  ADDRESS: string;
   TEL: string;
   EMAIL: string;
   STATUS: string;

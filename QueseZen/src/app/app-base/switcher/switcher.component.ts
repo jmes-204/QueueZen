@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from './../../services/authen/auth.service';
-import { AppService, ResponseType } from './../../services/app/app.service';
-import { IFMenu } from './../../config/interface/app-config';
+import { AuthService } from 'src/app/services/authen/auth.service';
+import { AppService, ResponseType } from 'src/app/services/app/app.service';
+import { IFMenu } from 'src/app/config/interface/app-config';
 
 @Component({
   selector: 'app-switcher',

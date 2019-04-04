@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppBaseModule } from './app-base/app-base.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ViewService } from './services/view/view.service';
+import { ViewService } from 'src/app/services/view/view.service';
 
 import lcoaleTh from '@angular/common/locales/th';
 import { registerLocaleData } from '@angular/common';

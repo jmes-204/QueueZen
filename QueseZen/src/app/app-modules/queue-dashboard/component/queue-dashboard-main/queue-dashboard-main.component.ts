@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalFunctionService } from './../../../../services/global-function/global-function.service';
+import { GlobalFunctionService } from 'src/app/services/global-function/global-function.service';
+import { AppService } from 'src/app/services/app/app.service';
 @Component({
   selector: 'app-queue-dashboard-main',
   templateUrl: './queue-dashboard-main.component.html',
@@ -7,12 +8,14 @@ import { GlobalFunctionService } from './../../../../services/global-function/gl
 })
 export class QueueDashboardMainComponent implements OnInit {
 
-  constructor(public globalFunction: GlobalFunctionService) { }
-  public queueDate = '';
-  public now: any;
+  constructor(public appService: AppService, public globalFunction: GlobalFunctionService) { }
+  queueDate = '';
+  now: any;
+  branchName: string;
 
   ngOnInit() {
     this.setDateNowString();
+    this.branchName = this.appService.user.BRANCH_NAME;
   }
   setDateNowString() {
     setInterval(() => {

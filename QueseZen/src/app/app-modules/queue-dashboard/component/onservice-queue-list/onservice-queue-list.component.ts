@@ -5,17 +5,12 @@ export interface IFTable {
   QUEUE_NUMBER: string;
 }
 
-const elementDate: IFTable[] = [
+const mockupElementDate: IFTable[] = [
   { SERVICE_CHANEL: '5', QUEUE_NUMBER: 'A001' },
   { SERVICE_CHANEL: '2', QUEUE_NUMBER: 'A002' },
   { SERVICE_CHANEL: '3', QUEUE_NUMBER: 'A003' },
   { SERVICE_CHANEL: '4', QUEUE_NUMBER: 'C001' },
-  { SERVICE_CHANEL: '5', QUEUE_NUMBER: 'C002' },
-  { SERVICE_CHANEL: '', QUEUE_NUMBER: '' },
-  { SERVICE_CHANEL: '', QUEUE_NUMBER: '' },
-  { SERVICE_CHANEL: '', QUEUE_NUMBER: '' },
-  { SERVICE_CHANEL: '', QUEUE_NUMBER: '' },
-  { SERVICE_CHANEL: '', QUEUE_NUMBER: '' }
+  { SERVICE_CHANEL: '5', QUEUE_NUMBER: 'C002' }
 ];
 @Component({
   selector: 'app-onservice-queue-list',
@@ -23,12 +18,33 @@ const elementDate: IFTable[] = [
   styleUrls: ['./onservice-queue-list.component.scss']
 })
 export class OnserviceQueueListComponent implements OnInit {
-  public displayedColumns: string[] = ['SERVICE_CHANEL', 'QUEUE_NUMBER'];
-  public dataSource: IFTable[] = elementDate;
+  // public displayedColumns: string[] = ['SERVICE_CHANEL', 'QUEUE_NUMBER'];
+  public dataSource: IFTable[];
+  priorityQueueItemHeight: number;
+  priorityQueueMaxItem = 10;
 
   constructor() { }
 
   ngOnInit() {
+    this.setOnServiceQueueItemHeight(this.priorityQueueMaxItem);
+    this.setOnServiceQueueItem(mockupElementDate, this.priorityQueueMaxItem);
   }
-
+  setOnServiceQueueItemHeight(maxItem: number) {
+    this.priorityQueueMaxItem = maxItem;
+    this.priorityQueueItemHeight = 100 / (maxItem + 1); // ! +1 Header Column
+  }
+  setOnServiceQueueItem(mockPriorityQueueItem: IFTable[], maxItem: number) {
+    this.dataSource = new Array();
+    for (let i = 0; i < maxItem; i++) {
+      if (mockPriorityQueueItem[i]) {
+        this.dataSource.push(mockPriorityQueueItem[i]);
+      } else {
+        const newData: IFTable = {
+          SERVICE_CHANEL: ''
+          , QUEUE_NUMBER: ''
+        };
+        this.dataSource.push(newData);
+      }
+    }
+  }
 }

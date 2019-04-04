@@ -13,13 +13,13 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table> -->
 
-<table>
+<table class="h-100">
   <tbody>
-    <tr>
+    <tr [style.height.%]=priorityQueueItemHeight>
       <th> หมายเลข </th>
       <th> ช่องบริการ </th>
     </tr>
-    <tr *ngFor="let item of dataSource">
+    <tr *ngFor="let item of dataSource" [style.height.%]=priorityQueueItemHeight>
       <td>{{item.QUEUE_NUMBER}}</td>
       <td>{{item.SERVICE_CHANEL}}</td>
     </tr>

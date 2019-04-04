@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AppService, ResponseType } from './../app/app.service';
+import { AppService, ResponseType } from 'src/app/services/app/app.service';
 
 import { IFCurrenceConfig } from 'src/app/config/interface/local-storage/current-config';
 // ! MockupData
-import { appConfig } from './../../config/mockup-data/app-config';
-import { user } from './../../config/mockup-data/user';
+import { appConfig } from 'src/app/config/mockup-data/app-config';
+import { user } from 'src/app/config/mockup-data/user';
 // ! MockupData
 
 @Injectable()

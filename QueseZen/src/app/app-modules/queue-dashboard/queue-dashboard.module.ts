@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AngularMatterialModule } from './../../matterials/angular-matterial.module';
+import { AngularMatterialModule } from 'src/app/matterials/angular-matterial.module';
 
 // * == Component Of Menu == * //
 import { QueueDashboardMainComponent } from './component/queue-dashboard-main/queue-dashboard-main.component';

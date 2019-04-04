@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IFMenu } from 'src/app/config/interface/app-config';
 import { AppService } from 'src/app/services/app/app.service';
-import { MenuConfig } from './../../config/class/menu-config';
+import { MenuConfig } from 'src/app/config/class/menu-config';
 
 @Component({
   selector: 'app-homepage',

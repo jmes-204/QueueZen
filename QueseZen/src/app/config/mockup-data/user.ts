@@ -1,16 +1,13 @@
-import { IFUser } from '../interface/user';
+import { IFUser } from 'src/app/config/interface/user';
 
 export const user: IFUser = {
   USER_ID: '999999999',
   TITLE: null,
   NAME: 'ผู้ใช้งาน',
   SURNAME: 'ทั่วไป',
-  DEPT1: '',
-  DEPT2: '',
-  DEPT3: '',
-  DEPT4: null,
+  BRANCH_ID: '1',
+  BRANCH_NAME: 'Studio 7-The Mall-Bangkae',
   POSITION: null,
-  ADDRESS: null,
   TEL: null,
   EMAIL: '',
   STATUS: 'VALID',

@@ -3,10 +3,9 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http'; //
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IFUser } from './../../config/interface/user';
-import { IFAppConfig } from './../../config/interface/app-config';
-import { ViewService } from './../view/view.service';
-
+import { IFUser } from 'src/app/config/interface/user';
+import { IFAppConfig } from 'src/app/config/interface/app-config';
+import { ViewService } from 'src/app/services/view/view.service';
 export enum ResponseType {
   json = 0,
   text = 1,

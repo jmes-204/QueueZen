@@ -6,7 +6,7 @@ export interface IFPriorityQueueItem {
   QUEUE_INDEX: string;
   QUEUE_TIME: string;
 }
-export const mockPriorityQueueItem: IFPriorityQueueItem[] =
+export const mockupElementDate: IFPriorityQueueItem[] =
   [
     {
       QUEUE_NO: 'RS250',
@@ -46,7 +46,7 @@ export class PriorityQueueListComponent implements OnInit {
   priorityQueueMaxItem = 10;
   ngOnInit() {
     this.setPriorityQueueItemWidth(this.priorityQueueMaxItem);
-    this.setPriorityQueueItem(mockPriorityQueueItem, this.priorityQueueMaxItem);
+    this.setPriorityQueueItem(mockupElementDate, this.priorityQueueMaxItem);
   }
   setPriorityQueueItemWidth(maxItem: number) {
     this.priorityQueueMaxItem = maxItem;

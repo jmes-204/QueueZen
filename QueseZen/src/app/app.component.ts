@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewService } from './services/view/view.service';
+import { ViewService } from 'src/app/services/view/view.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
