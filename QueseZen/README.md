@@ -39,3 +39,19 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 2. css ที่ใช้ร่วมกันทุกหน้า ให้ใส่ไว้ที่ file style.scss ที่อยู่ layer เดียวกับ app 
 
 3. การสร้าง function ให้ใช้แบบ () => {}; หรือ ให้ลง extension tslynt เเล้วปรับการเขียนตามที่ tslynt recommend
+
+4. สร้าง folder mock ที่เก็บ data mock กับ interface นั้นไว้ด้วยกัน
+
+5. การประกาศตัวเเปรในเเต่ละ class ให้ประกาศไว้บนสุด เเล้วตามด้วย constructor เช่น
+    export class OnserviceQueueListComponent implements OnInit {
+  
+    dataSource: IFTable[];
+    priorityQueueItemHeight: number;
+    priorityQueueMaxItem = 10;
+
+    constructor() { }
+  }
+  
+  ขึ้นต้นด้วย IF เเล้วตามด้วยชื่อ Component ใช้ เช่น IFOnServiceItemProp
+  
+  เว้นบรรทัดระหว่าง method 1 บรรทัด
