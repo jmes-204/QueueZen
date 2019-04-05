@@ -49,9 +49,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     priorityQueueItemHeight: number;
     priorityQueueMaxItem = 10;
 
-    constructor() { }
+    constructor(
+      public import: Import,
+      public export: Export
+    ) { }
   }
   
-  ขึ้นต้นด้วย IF เเล้วตามด้วยชื่อ Component ใช้ เช่น IFOnServiceItemProp
+ 6. สร้าง property object ให้ขึ้นต้นด้วย IF เเล้วตามด้วยชื่อ Component ใช้ เช่น IFOnServiceItemProp
   
-  เว้นบรรทัดระหว่าง method 1 บรรทัด
+ 7. เว้นบรรทัดระหว่าง method 1 บรรทัด
+  
+ 8. ในการ import จากไฟล์อื่นให้ใส่ path เต็ เช่น import { ViewService } from 'src/app/services/view/view.service';
